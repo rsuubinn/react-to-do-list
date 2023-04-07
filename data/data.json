@@ -1,0 +1,18 @@
+{
+  "todos": [
+    {
+      "id": 1,
+      "category": "진행중",
+      "title": "나는야 코딩중",
+      "description": "투두 만들기",
+      "createdAt": "2023년 4월 7일"
+    },
+    {
+      "id": 2,
+      "category": "완료",
+      "title": "집안일",
+      "description": "방청소",
+      "createdAt": "2023년 4월 7일"
+    }
+  ]
+}
