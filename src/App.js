@@ -1,11 +1,16 @@
 import { Route, Routes } from "react-router-dom";
 import { createGlobalStyle } from "styled-components";
+import { Provider } from "react-redux";
+import { legacy_createStore as createStore } from "redux";
 import reset from "styled-reset";
 import Home from "./routes/Home";
 
 const Globalstyle = createGlobalStyle`
   ${reset}
 `;
+
+const reducer = () => {};
+const store = createStore(reducer);
 
 function App() {
   return (

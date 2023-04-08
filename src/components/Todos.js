@@ -1,6 +1,8 @@
 import styled from "styled-components";
 import { useEffect, useState } from "react";
 import axios from "axios";
+import AddIcon from "@mui/icons-material/Add";
+import CreateTodo from "./CreateTodo";
 
 const Container = styled.div`
   background-color: #6b6b6b;
@@ -8,16 +10,65 @@ const Container = styled.div`
   width: 70vw;
 `;
 
-const Todos = () => {
+const CreateToDoBtn = styled.div`
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  cursor: pointer;
+`;
+
+const Title = styled.h1`
+  margin-top: 10vh;
+  font-size: 4rem;
+  margin-left: 20px;
+  margin-bottom: 20px;
+  font-weight: 600;
+`;
+
+const Lists = styled.ul`
+  padding: 20px;
+  margin: 0 10px;
+`;
+
+const List = styled.li`
+  padding: 10px;
+  margin-bottom: 10px;
+  border-bottom: 0.5px solid rgba(255, 255, 255, 0.5);
+`;
+
+const Checkbox = styled.input``;
+
+const Todos = ({ categories }) => {
   const [todos, setTodos] = useState([]);
+  const [createTodoModal, setCreateTodoModal] = useState(false);
   useEffect(() => {
     axios.get("http://localhost:3001/todos").then((res) => setTodos(res.data));
   }, []);
+
+  const handleModal = () => {
+    setCreateTodoModal(true);
+    console.log(createTodoModal);
+  };
   return (
     <Container>
-      {todos.map((todo) => (
-        <span key={todo.id}>{todo.title}</span>
-      ))}
+      <CreateToDoBtn onClick={handleModal}>
+        <AddIcon sx={{ fontSize: 35 }} />
+      </CreateToDoBtn>
+      {createTodoModal && (
+        <CreateTodo
+          categories={categories}
+          setCreateTodoModal={setCreateTodoModal}
+        />
+      )}
+      <Title>전체</Title>
+      <Lists>
+        {todos.map((todo) => (
+          <List key={todo.id}>
+            <Checkbox type="checkbox" />
+            {todo.title}
+          </List>
+        ))}
+      </Lists>
     </Container>
   );
 };
