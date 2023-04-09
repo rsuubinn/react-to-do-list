@@ -3,7 +3,7 @@ import Search from "./Search";
 import InboxIcon from "@mui/icons-material/Inbox";
 import Category from "./Category";
 import { useEffect, useState } from "react";
-import axios from "axios";
+import CreateCategory from "./CreateCategory";
 
 const Container = styled.div`
   background-color: rgba(5, 5, 5, 0.75);
@@ -45,6 +45,7 @@ const Categories = ({ categories }) => {
           <List key={category.id}>{category.name}</List>
         ))}
       </Lists>
+      <CreateCategory class="create_category" />
     </Container>
   );
 };

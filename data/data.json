@@ -1,36 +1,20 @@
 {
   "todos": [
     {
-      "id": 1,
-      "category": "진행중",
-      "title": "나는야 코딩중",
-      "description": "투두 만들기",
-      "createdAt": "2023년 4월 7일",
-      "isComplete": false
-    },
-    {
-      "id": 2,
-      "category": "완료",
-      "title": "집안일",
-      "description": "방청소",
-      "createdAt": "2023년 4월 7일",
-      "isComplete": false
-    },
-    {
-      "category": "",
-      "title": "1",
-      "description": "2",
-      "createdAt": 1680935481233,
-      "isComplete": false,
-      "id": 3
-    },
-    {
       "category": "doing",
       "title": "공부하기",
       "description": "리액트",
       "createdAt": 1680963614375,
       "isComplete": false,
-      "id": 4
+      "id": 1
+    },
+    {
+      "category": "todo",
+      "title": "1",
+      "description": "1",
+      "createdAt": 1680964910742,
+      "isComplete": false,
+      "id": 2
     }
   ],
   "categories": [

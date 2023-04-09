@@ -2,7 +2,6 @@ import styled from "styled-components";
 import { AnimatePresence, motion } from "framer-motion";
 import CloseIcon from "@mui/icons-material/Close";
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
 
 const Overlay = styled(motion.div)`
   width: 100vw;
@@ -35,7 +34,7 @@ const CloseBtn = styled.div`
   cursor: pointer;
 `;
 
-const CreateBtn = styled.button``;
+const EditBtn = styled.button``;
 
 const Form = styled.form`
   display: flex;
@@ -52,53 +51,29 @@ const Description = styled.div`
 
 const Category = styled.div``;
 
-const CreateTodo = ({ categories, setCreateTodoModal }) => {
-  const [title, setTitle] = useState("");
-  const [description, setDescription] = useState("");
-  const [category, setCategory] = useState(categories[0].name);
+const TodoInfo = ({ todo, categories, setTodoInfoModal }) => {
+  const [title, setTitle] = useState(todo.title);
+  const [description, setDescription] = useState(todo.description);
+  const [category, setCategory] = useState(todo.category);
 
-  const navigate = useNavigate();
-
-  const newTodo = {
-    category,
-    title,
-    description,
-    createdAt: Date.now(),
-    isComplete: false,
-  };
-
-  const handleClick = () => {
-    setCreateTodoModal(false);
-    navigate("/");
-  };
-  const handleCrateTodo = (e) => {
+  const handleEditTodo = (e) => {
     e.preventDefault();
-    fetch("http://localhost:3001/todos", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(newTodo),
-    }).then(() => {
-      setCreateTodoModal(false);
-      navigate("/");
-    });
   };
-
   return (
     <>
-      <Overlay onClick={handleClick} />
+      <Overlay onClick={() => setTodoInfoModal(false)} />
       <Container>
         <Btns>
-          <CloseBtn onClick={handleClick}>
+          <CloseBtn onClick={() => setTodoInfoModal(false)}>
             <CloseIcon />
           </CloseBtn>
-          <CreateBtn onClick={handleCrateTodo}>Create</CreateBtn>
+          <EditBtn onClick={handleEditTodo}>Edit</EditBtn>
         </Btns>
-        <Form onSubmit={handleCrateTodo}>
+        <Form onSubmit={handleEditTodo}>
           <Title>
             <h3>제목</h3>
             <input
+              value={title}
               placeholder="제목"
               required
               onChange={(e) => setTitle(e.target.value)}
@@ -107,6 +82,7 @@ const CreateTodo = ({ categories, setCreateTodoModal }) => {
           <Description>
             <h3>내용</h3>
             <textarea
+              value={description}
               placeholder="내용"
               onChange={(e) => setDescription(e.target.value)}
             ></textarea>
@@ -130,4 +106,4 @@ const CreateTodo = ({ categories, setCreateTodoModal }) => {
   );
 };
 
-export default CreateTodo;
+export default TodoInfo;

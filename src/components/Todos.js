@@ -2,7 +2,10 @@ import styled from "styled-components";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import AddIcon from "@mui/icons-material/Add";
+import InfoIcon from "@mui/icons-material/Info";
 import CreateTodo from "./CreateTodo";
+import TodoInfo from "./TodoInfo";
+import { useNavigate } from "react-router-dom";
 
 const Container = styled.div`
   background-color: #6b6b6b;
@@ -31,6 +34,8 @@ const Lists = styled.ul`
 `;
 
 const List = styled.li`
+  display: flex;
+  align-items: center;
   padding: 10px;
   margin-bottom: 10px;
   border-bottom: 0.5px solid rgba(255, 255, 255, 0.5);
@@ -41,17 +46,24 @@ const Checkbox = styled.input``;
 const Todos = ({ categories }) => {
   const [todos, setTodos] = useState([]);
   const [createTodoModal, setCreateTodoModal] = useState(false);
+  const [todoInfoModal, setTodoInfoModal] = useState(false);
+
+  const navigate = useNavigate();
+
   useEffect(() => {
     axios.get("http://localhost:3001/todos").then((res) => setTodos(res.data));
   }, []);
 
-  const handleModal = () => {
+  const handleCreateTodoModal = () => {
+    navigate("/create");
     setCreateTodoModal(true);
-    console.log(createTodoModal);
+  };
+  const handleTodoInfoModal = () => {
+    setTodoInfoModal(true);
   };
   return (
     <Container>
-      <CreateToDoBtn onClick={handleModal}>
+      <CreateToDoBtn onClick={handleCreateTodoModal}>
         <AddIcon sx={{ fontSize: 35 }} />
       </CreateToDoBtn>
       {createTodoModal && (
@@ -66,6 +78,14 @@ const Todos = ({ categories }) => {
           <List key={todo.id}>
             <Checkbox type="checkbox" />
             {todo.title}
+            <InfoIcon onClick={handleTodoInfoModal} />
+            {todoInfoModal && (
+              <TodoInfo
+                todo={todo}
+                categories={categories}
+                setTodoInfoModal={setTodoInfoModal}
+              />
+            )}
           </List>
         ))}
       </Lists>
