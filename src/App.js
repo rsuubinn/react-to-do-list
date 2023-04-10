@@ -13,10 +13,12 @@ function App() {
       <Globalstyle />
       <Routes>
         <Route path="/" element={<Home />}></Route>
-        <Route path="/create" element={<Home />}></Route>
+        <Route path="/create/todo" element={<Home />}></Route>
+        <Route path="/create/category" element={<Home />}></Route>
         <Route path="/edit" element={<Home />}></Route>
         <Route path="/search" element={<Home />}></Route>
         <Route path="/todo/:id" element={<Home />}></Route>
+        <Route path="/:category" element={<Home />}></Route>
       </Routes>
     </div>
   );

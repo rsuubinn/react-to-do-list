@@ -3,8 +3,8 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import AddIcon from "@mui/icons-material/Add";
 import InfoIcon from "@mui/icons-material/Info";
-import CreateTodo from "./CreateTodo";
-import TodoInfo from "./TodoInfo";
+import CreateTodo from "./todo/CreateTodo";
+import TodoInfo from "./todo/TodoInfo";
 import { useNavigate } from "react-router-dom";
 
 const Container = styled.div`
@@ -39,6 +39,9 @@ const List = styled.li`
   padding: 10px;
   margin-bottom: 10px;
   border-bottom: 0.5px solid rgba(255, 255, 255, 0.5);
+  .infoIcon:hover {
+    cursor: pointer;
+  }
 `;
 
 const Checkbox = styled.input``;
@@ -55,13 +58,10 @@ const Todos = ({ categories }) => {
   }, []);
 
   const handleCreateTodoModal = () => {
-    navigate("/create");
+    navigate("/create/todo");
     setCreateTodoModal(true);
   };
-  //   const handleTodoInfoModal = () => {
 
-  //     setTodoInfoModal(true);
-  //   };
   return (
     <Container>
       <CreateToDoBtn onClick={handleCreateTodoModal}>
@@ -74,12 +74,14 @@ const Todos = ({ categories }) => {
         />
       )}
       <Title>전체</Title>
+      <span>{todos.length}개 중 0개 완료됨</span>
       <Lists>
         {todos.map((todo) => (
           <List key={todo.id}>
             <Checkbox type="checkbox" />
             {todo.title}
             <InfoIcon
+              className="infoIcon"
               onClick={() => {
                 navigate(`todo/${todo.id}`);
                 setTodoInfoModal(true);

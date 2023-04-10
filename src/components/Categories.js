@@ -1,8 +1,8 @@
 import styled from "styled-components";
 import Search from "./Search";
-import InboxIcon from "@mui/icons-material/Inbox";
 import Category from "./Category";
-import { useEffect, useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import { useState } from "react";
 import CreateCategory from "./CreateCategory";
 
 const Container = styled.div`
@@ -29,9 +29,18 @@ const Lists = styled.div`
   }
 `;
 
-const List = styled.div``;
+const List = styled.div`
+  margin-bottom: 10px;
+`;
 
 const Categories = ({ categories }) => {
+  const [createCategoryModal, setCreateCategoryModal] = useState(false);
+  const navigate = useNavigate();
+
+  const handleCreateCategory = (e) => {
+    navigate("/create/category");
+    setCreateCategoryModal(true);
+  };
   return (
     <Container>
       <Search />
@@ -42,10 +51,15 @@ const Categories = ({ categories }) => {
       <Lists>
         <h3>나의 목록</h3>
         {categories.map((category) => (
-          <List key={category.id}>{category.name}</List>
+          <Link key={category.id} to={`/${category.name}`}>
+            <List>{category.name}</List>
+          </Link>
         ))}
       </Lists>
-      <CreateCategory class="create_category" />
+      <button onClick={handleCreateCategory}>목록 추가</button>
+      {createCategoryModal && (
+        <CreateCategory setCreateCategoryModal={setCreateCategoryModal} />
+      )}
     </Container>
   );
 };

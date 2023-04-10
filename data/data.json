@@ -2,11 +2,19 @@
   "todos": [
     {
       "category": "todo",
-      "title": "밥먹기",
-      "description": "밥먹자!",
-      "createdAt": 1681090907149,
+      "title": "1",
+      "description": "2",
+      "createdAt": 1681135231708,
       "isComplete": false,
       "id": 1
+    },
+    {
+      "category": "doing",
+      "title": "3",
+      "description": "4",
+      "createdAt": 1681135239152,
+      "isComplete": false,
+      "id": 2
     }
   ],
   "categories": [
@@ -21,6 +29,14 @@
     {
       "id": 3,
       "name": "done"
+    },
+    {
+      "name": "살 것",
+      "id": 4
+    },
+    {
+      "name": "숙제",
+      "id": 5
     }
   ]
 }
