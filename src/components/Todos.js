@@ -58,9 +58,10 @@ const Todos = ({ categories }) => {
     navigate("/create");
     setCreateTodoModal(true);
   };
-  const handleTodoInfoModal = () => {
-    setTodoInfoModal(true);
-  };
+  //   const handleTodoInfoModal = () => {
+
+  //     setTodoInfoModal(true);
+  //   };
   return (
     <Container>
       <CreateToDoBtn onClick={handleCreateTodoModal}>
@@ -78,7 +79,12 @@ const Todos = ({ categories }) => {
           <List key={todo.id}>
             <Checkbox type="checkbox" />
             {todo.title}
-            <InfoIcon onClick={handleTodoInfoModal} />
+            <InfoIcon
+              onClick={() => {
+                navigate(`todo/${todo.id}`);
+                setTodoInfoModal(true);
+              }}
+            />
             {todoInfoModal && (
               <TodoInfo
                 todo={todo}

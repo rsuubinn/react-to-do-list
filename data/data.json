@@ -1,20 +1,12 @@
 {
   "todos": [
     {
-      "category": "doing",
-      "title": "공부하기",
-      "description": "리액트",
-      "createdAt": 1680963614375,
+      "category": "todo",
+      "title": "밥먹기",
+      "description": "밥먹자!",
+      "createdAt": 1681090907149,
       "isComplete": false,
       "id": 1
-    },
-    {
-      "category": "todo",
-      "title": "1",
-      "description": "1",
-      "createdAt": 1680964910742,
-      "isComplete": false,
-      "id": 2
     }
   ],
   "categories": [

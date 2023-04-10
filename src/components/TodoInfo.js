@@ -2,6 +2,7 @@ import styled from "styled-components";
 import { AnimatePresence, motion } from "framer-motion";
 import CloseIcon from "@mui/icons-material/Close";
 import { useState } from "react";
+import { useNavigate, useParams } from "react-router-dom";
 
 const Overlay = styled(motion.div)`
   width: 100vw;
@@ -56,15 +57,38 @@ const TodoInfo = ({ todo, categories, setTodoInfoModal }) => {
   const [description, setDescription] = useState(todo.description);
   const [category, setCategory] = useState(todo.category);
 
+  const navigate = useNavigate();
+  const { id } = useParams(0);
+
   const handleEditTodo = (e) => {
     e.preventDefault();
+    fetch("http://localhost:3001/todos", {
+      method: "PUT",
+    });
+  };
+
+  const handleDeleteTodo = (e) => {
+    const ok = window.confirm("정말 삭제하시겠습니까?");
+    if (ok) {
+      fetch(`http://localhost:3001/todos/${id}`, {
+        method: "DELETE",
+      }).then(() => {
+        setTodoInfoModal(false);
+        navigate("/");
+      });
+    }
+  };
+
+  const handleCloseBtnClick = () => {
+    navigate("/");
+    setTodoInfoModal(false);
   };
   return (
     <>
-      <Overlay onClick={() => setTodoInfoModal(false)} />
+      <Overlay onClick={handleCloseBtnClick} />
       <Container>
         <Btns>
-          <CloseBtn onClick={() => setTodoInfoModal(false)}>
+          <CloseBtn onClick={handleCloseBtnClick}>
             <CloseIcon />
           </CloseBtn>
           <EditBtn onClick={handleEditTodo}>Edit</EditBtn>
@@ -101,6 +125,7 @@ const TodoInfo = ({ todo, categories, setTodoInfoModal }) => {
             </select>
           </Category>
         </Form>
+        <button onClick={handleDeleteTodo}>Delete</button>
       </Container>
     </>
   );
