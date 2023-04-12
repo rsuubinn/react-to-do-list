@@ -1,42 +1,19 @@
 {
   "todos": [
     {
-      "category": "todo",
-      "title": "1",
-      "description": "2",
-      "createdAt": 1681135231708,
-      "isComplete": false,
+      "text": "밥먹기",
+      "isChecked": true,
       "id": 1
     },
     {
-      "category": "doing",
-      "title": "3",
-      "description": "4",
-      "createdAt": 1681135239152,
-      "isComplete": false,
+      "text": "밥먹기",
+      "isChecked": false,
       "id": 2
-    }
-  ],
-  "categories": [
-    {
-      "id": 1,
-      "name": "todo"
     },
     {
-      "id": 2,
-      "name": "doing"
-    },
-    {
-      "id": 3,
-      "name": "done"
-    },
-    {
-      "name": "살 것",
-      "id": 4
-    },
-    {
-      "name": "숙제",
-      "id": 5
+      "text": "공부",
+      "isChecked": false,
+      "id": 3
     }
   ]
 }
