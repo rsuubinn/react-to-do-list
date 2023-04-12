@@ -23,16 +23,15 @@ const TodoList = ({ todo, handleCheck, handleEdit, handleDelete }) => {
   return (
     <Container>
       {isChecked ? (
-        <RadioButtonCheckedIcon onClick={() => handleCheck(id, isChecked)} />
+        <RadioButtonCheckedIcon onClick={() => handleCheck(id)} />
       ) : (
-        <RadioButtonUncheckedIcon onClick={() => handleCheck(id, isChecked)} />
+        <RadioButtonUncheckedIcon onClick={() => handleCheck(id)} />
       )}
       {text}
       <div>
         <EditIcon onClick={() => handleEdit()} />
         <DeleteIcon onClick={() => handleDelete(id)} />
       </div>
-
     </Container>
   );
 };

@@ -32,20 +32,21 @@ const ToDoMain = () => {
   }, []);
 
   // 체크 박스
-  const handleCheck = (id, isChecked) => {
+  const handleCheck = (id) => {
+    let findTodo = todos.filter((todo) => todo.id === id)[0];
     fetch(`http://localhost:3001/todos/${id}`, {
       method: "PATCH",
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({ isChecked }),
+      body: JSON.stringify({ ...findTodo, isChecked: !findTodo.isChecked }),
     })
       .then((res) => res.json())
       .catch((error) => console.log(error));
 
     setTodos([
       ...todos.map((todo) =>
-        todo.id === id ? { ...todo, isChecked: !isChecked } : todo
+        todo.id === id ? { ...todo, isChecked: !findTodo.isChecked } : todo
       ),
     ]);
   };

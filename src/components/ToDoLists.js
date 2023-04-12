@@ -3,6 +3,7 @@ import TodoList from "./ToDoList";
 
 const Container = styled.div`
   width: 30%;
+  margin-bottom: 3rem;
 `;
 
 const TodoLists = ({ todos, handleCheck, handleEdit, handleDelete }) => {

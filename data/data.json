@@ -7,13 +7,13 @@
     },
     {
       "text": "밥먹기",
-      "isChecked": false,
+      "isChecked": true,
       "id": 2
     },
     {
-      "text": "공부",
+      "text": "오늘!",
       "isChecked": false,
-      "id": 3
+      "id": 4
     }
   ]
 }
