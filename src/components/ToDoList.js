@@ -32,8 +32,11 @@ const TodoList = ({ todo, handleCheck, handleEdit, handleDelete }) => {
         <EditIcon onClick={() => handleEdit()} />
         <DeleteIcon onClick={() => handleDelete(id)} />
       </div>
+
     </Container>
   );
 };
 
+
 export default TodoList;
+
