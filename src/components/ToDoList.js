@@ -30,6 +30,11 @@ const TodoList = ({ todo, handleCheck, handleEdit, handleDelete }) => {
     setIsEditModal(true);
   };
 
+  const onDelete = () => {
+    const ok = window.confirm("정말 삭제하시겠습니까?");
+    if (ok) handleDelete(id);
+  };
+
   return (
     <Container className={`${isChecked ? "checked" : ""}`}>
       {isChecked ? (
@@ -40,7 +45,7 @@ const TodoList = ({ todo, handleCheck, handleEdit, handleDelete }) => {
       <span>{text}</span>
       <div>
         <EditIcon onClick={() => onEdit()} />
-        <DeleteIcon onClick={() => handleDelete(id)} />
+        <DeleteIcon onClick={() => onDelete()} />
       </div>
       {isEditModal && (
         <ToDoEdit
