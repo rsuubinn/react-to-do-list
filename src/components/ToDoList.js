@@ -3,6 +3,8 @@ import RadioButtonUncheckedIcon from "@mui/icons-material/RadioButtonUnchecked";
 import RadioButtonCheckedIcon from "@mui/icons-material/RadioButtonChecked";
 import EditIcon from "@mui/icons-material/Edit";
 import DeleteIcon from "@mui/icons-material/Delete";
+import { useState } from "react";
+import ToDoEdit from "./ToDoEdit";
 
 const Container = styled.div`
   width: 100%;
@@ -15,23 +17,32 @@ const Container = styled.div`
   svg {
     cursor: pointer;
   }
+  .checked > span {
+    text-decoration: line-through;
+  }
 `;
 
 const TodoList = ({ todo, handleCheck, handleEdit, handleDelete }) => {
   const { id, text, isChecked } = todo;
+  const [isEditModal, setIsEditModal] = useState(false);
+
+  const onEdit = () => {
+    setIsEditModal(true);
+  };
 
   return (
-    <Container>
+    <Container className={`${isChecked ? "checked" : ""}`}>
       {isChecked ? (
         <RadioButtonCheckedIcon onClick={() => handleCheck(id)} />
       ) : (
         <RadioButtonUncheckedIcon onClick={() => handleCheck(id)} />
       )}
-      {text}
+      <span>{text}</span>
       <div>
-        <EditIcon onClick={() => handleEdit()} />
+        <EditIcon onClick={() => onEdit()} />
         <DeleteIcon onClick={() => handleDelete(id)} />
       </div>
+      {isEditModal && <ToDoEdit todoId={id} setIsEditModal={setIsEditModal} />}
     </Container>
   );
 };

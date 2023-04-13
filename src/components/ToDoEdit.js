@@ -59,27 +59,25 @@ const Form = styled.form`
   }
 `;
 
-const ToDoCreate = ({ handleCreate, setIsAddModal }) => {
+const ToDoEdit = ({ todoId, setIsEditModal }) => {
   const [newText, setNewText] = useState("");
 
   const handleTextChange = (e) => {
     setNewText(e.target.value);
   };
-
   const handleSubmit = (e) => {
     e.preventDefault();
-    setIsAddModal(false);
+    setIsEditModal(false);
     setNewText(e.target.value);
-    handleCreate(newText);
   };
 
   return (
     <>
-      <Overlay onClick={() => setIsAddModal(false)} />
+      <Overlay onClick={() => setIsEditModal(false)} />
       <Container>
         <Btns>
           <CloseIcon
-            onClick={() => setIsAddModal(false)}
+            onClick={() => setIsEditModal(false)}
             className="close_icon"
           />
           <AddIcon onClick={handleSubmit} className="add_icon" />
@@ -98,4 +96,4 @@ const ToDoCreate = ({ handleCreate, setIsAddModal }) => {
   );
 };
 
-export default ToDoCreate;
+export default ToDoEdit;
