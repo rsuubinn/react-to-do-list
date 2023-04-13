@@ -42,7 +42,14 @@ const TodoList = ({ todo, handleCheck, handleEdit, handleDelete }) => {
         <EditIcon onClick={() => onEdit()} />
         <DeleteIcon onClick={() => handleDelete(id)} />
       </div>
-      {isEditModal && <ToDoEdit todoId={id} setIsEditModal={setIsEditModal} />}
+      {isEditModal && (
+        <ToDoEdit
+          todoText={todo.text}
+          todoId={todo.id}
+          setIsEditModal={setIsEditModal}
+          handleEdit={handleEdit}
+        />
+      )}
     </Container>
   );
 };

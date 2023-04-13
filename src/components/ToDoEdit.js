@@ -59,8 +59,8 @@ const Form = styled.form`
   }
 `;
 
-const ToDoEdit = ({ todoId, setIsEditModal }) => {
-  const [newText, setNewText] = useState("");
+const ToDoEdit = ({ todoText, todoId, setIsEditModal, handleEdit }) => {
+  const [newText, setNewText] = useState(todoText);
 
   const handleTextChange = (e) => {
     setNewText(e.target.value);
@@ -69,6 +69,7 @@ const ToDoEdit = ({ todoId, setIsEditModal }) => {
     e.preventDefault();
     setIsEditModal(false);
     setNewText(e.target.value);
+    handleEdit(todoId, newText);
   };
 
   return (
@@ -83,7 +84,7 @@ const ToDoEdit = ({ todoId, setIsEditModal }) => {
           <AddIcon onClick={handleSubmit} className="add_icon" />
         </Btns>
         <Form onSubmit={handleSubmit}>
-          <h3>오늘의 할 일을 입력해주세요 ✏️</h3>
+          <h3>오늘의 할 일을 수정해주세요 ✏️</h3>
           <textarea
             autoFocus
             value={newText}

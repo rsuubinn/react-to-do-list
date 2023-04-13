@@ -53,7 +53,22 @@ const ToDoMain = () => {
 
   // 수정
 
-  const handleEdit = () => {};
+  const handleEdit = (id, newText) => {
+    let findTodo = todos.filter((todo) => todo.id === id)[0];
+    fetch(`http://localhost:3001/todos/${id}`, {
+      method: "PATCH",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ ...findTodo, text: newText }),
+    }).then((res) =>
+      setTodos([
+        ...todos.map((todo) =>
+          todo.id === id ? { ...todo, text: newText } : todo
+        ),
+      ])
+    );
+  };
 
   // 삭제
 
