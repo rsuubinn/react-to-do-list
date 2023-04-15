@@ -13,6 +13,10 @@ const Container = styled.div`
   width: 100vw;
   height: 100vh;
   background-color: whitesmoke;
+  .addIcon {
+    font-size: 2.5rem;
+    cursor: pointer;
+  }
 `;
 
 const ToDoMain = () => {
@@ -110,7 +114,7 @@ const ToDoMain = () => {
         handleEdit={handleEdit}
         handleDelete={handleDelete}
       />
-      <AddCircleIcon onClick={() => setIsAddModal(true)} />
+      <AddCircleIcon className="addIcon" onClick={() => setIsAddModal(true)} />
       {isAddModal && (
         <ToDoCreate
           handleCreate={handleCreate}

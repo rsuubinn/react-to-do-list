@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import CloseIcon from "@mui/icons-material/Close";
-import AddIcon from "@mui/icons-material/Add";
+import EditIcon from "@mui/icons-material/Edit";
 import { useState } from "react";
 
 const Overlay = styled.div`
@@ -37,7 +37,7 @@ const Btns = styled.div`
   .close_icon {
     background-color: #ff5151;
   }
-  .add_icon {
+  .edit_icon {
     background-color: #64f46b;
   }
 `;
@@ -81,7 +81,7 @@ const ToDoEdit = ({ todoText, todoId, setIsEditModal, handleEdit }) => {
             onClick={() => setIsEditModal(false)}
             className="close_icon"
           />
-          <AddIcon onClick={handleSubmit} className="add_icon" />
+          <EditIcon onClick={handleSubmit} className="edit_icon" />
         </Btns>
         <Form onSubmit={handleSubmit}>
           <h3>오늘의 할 일을 수정해주세요 ✏️</h3>

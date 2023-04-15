@@ -1,7 +1,7 @@
 {
   "todos": [
     {
-      "text": "밥먹기",
+      "text": "밥 안먹어 -.-",
       "isChecked": false,
       "id": 2
     },
@@ -19,6 +19,11 @@
       "text": "오늘은 쉬고싶어",
       "isChecked": false,
       "id": 6
+    },
+    {
+      "text": "끝내주게 숨쉬기",
+      "isChecked": false,
+      "id": 7
     }
   ]
 }

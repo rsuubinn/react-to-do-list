@@ -16,8 +16,9 @@ const Container = styled.div`
   border-bottom: 1px solid #dddddd;
   svg {
     cursor: pointer;
+    margin-right: 5px;
   }
-  .checked > span {
+  .checked {
     text-decoration: line-through;
   }
 `;
@@ -36,13 +37,13 @@ const TodoList = ({ todo, handleCheck, handleEdit, handleDelete }) => {
   };
 
   return (
-    <Container className={`${isChecked ? "checked" : ""}`}>
+    <Container>
       {isChecked ? (
         <RadioButtonCheckedIcon onClick={() => handleCheck(id)} />
       ) : (
         <RadioButtonUncheckedIcon onClick={() => handleCheck(id)} />
       )}
-      <span>{text}</span>
+      <span className={`${isChecked ? "checked" : ""}`}>{text}</span>
       <div>
         <EditIcon onClick={() => onEdit()} />
         <DeleteIcon onClick={() => onDelete()} />
